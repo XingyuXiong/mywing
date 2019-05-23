@@ -1,4 +1,5 @@
 from common.test import TestCaseWithAngel, Client
+from .models import Angel
 
 
 class TestAngel(TestCaseWithAngel):
@@ -8,9 +9,9 @@ class TestAngel(TestCaseWithAngel):
         data = resp.json()['data']
         self.assertEqual(len(data), 1)
         self.assertEqual(data[0]['nickname'], self.angel.nickname)
-<<<<<<< HEAD
+
 
     def test_im_token(self):
-        self.assertNotEqual(self.angel.im_token, '')
-=======
->>>>>>> e73af38a444d573d4f09c4f2f2a0bed14cd671b7
+        angel = Angel.create('something-central-key')
+        angel.save()
+        self.assertNotEqual(angel.im_token, '')
